@@ -1,3 +1,9 @@
+:root {
+  --old-rose: #CC7178;
+  --chocolate-cosmos: #511c29;
+  --bone: #d0ceba;
+}
+
 .App {
   text-align: center;
 }
