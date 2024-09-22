@@ -1,0 +1,17 @@
+type Upgrade @entity(immutable: true) {
+  id: Bytes!
+  newContract: Bytes! # address
+  initializedWith: Bytes! # bytes
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnerUpdate @entity(immutable: true) {
+  id: Bytes!
+  _prevOwner: Bytes! # address
+  _newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
