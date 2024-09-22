@@ -19,10 +19,10 @@ Subgraph: The subgraph is responsible for fetching LAND sales data by listening 
 MANA Data: MANA price data is retrieved via a third-party API (e.g., CoinGecko) to track the value fluctuations over time.
 Frontend: The data is combined and visualized using D3.js in the React frontend. A heatmap displays the sales value distribution and highlights trends based on historical MANA prices.
 
-Contributing
+## Contributing
 Contributions are welcome! Please fork the repository and submit a pull request.
 
-Created By
+## Created By
 This project was created by Tracy Wankio and Joyce Njeri.
 For any questions or collaboration inquiries, please reach out to us at:
 
