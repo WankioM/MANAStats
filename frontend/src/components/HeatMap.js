@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 import './HeatMap.css'; 
 import { useQuery, gql } from '@apollo/client';
@@ -17,6 +17,14 @@ const GET_BID_DATA = gql`
 const Heatmap = () => {
   const svgRef = useRef();
   const { loading, error, data } = useQuery(GET_BID_DATA);
+  const [rectangles, setRectangles] = useState([]);
+  const [xLabels, setXLabels] = useState([]);
+  const [yLabels, setYLabels] = useState([]);
+  const [colorScale, setColorScale] = useState(() => d3.scaleSequential().interpolator(d3.interpolateInferno).domain([0, 1])); // Initial color scale
+
+  const MARGIN = { top: 10, right: 10, bottom: 30, left: 30 };
+  const width = 1000;
+  const height = 1000;
 
   useEffect(() => {
     if (loading || error) return; // Prevent execution if loading or error
@@ -26,15 +34,13 @@ const Heatmap = () => {
     data.bidSuccessfuls.forEach(plot => {
       plot._xs.forEach((x, i) => {
         landData.push({
-          x: parseInt(x),                    // x coordinate
-          y: parseInt(plot._ys[i]),           // y coordinate
+          x: parseInt(x), // x coordinate
+          y: parseInt(plot._ys[i]), // y coordinate
           price: parseInt(plot._pricePerLandInMana), // same price for all coordinates
-          beneficiary: plot._beneficiary      // beneficiary info if needed later
+          beneficiary: plot._beneficiary // beneficiary info if needed later
         });
       });
     });
-
-   
 
     // Optional: Store `landData` into variables for further use or debugging
     const xValues = landData.map(d => d.x);
@@ -45,55 +51,107 @@ const Heatmap = () => {
     console.log('Y Coordinates:', yValues);
     console.log('Prices:', prices);
 
-    // We will add the SVG logic later, now just focus on data organization.
+    // bounds = area inside the axis
+    const boundsWidth = width - MARGIN.right - MARGIN.left;
+    const boundsHeight = height - MARGIN.top - MARGIN.bottom;
 
-  
+    const allYGroups = [...new Set(landData.map(d => d.y))];
+    const allXGroups = [...new Set(landData.map(d => d.x))];
 
-   // Create color scale based on price
-   const colorScale = d3.scaleSequential(d3.interpolateYlOrRd)
-   .domain([0, d3.max(landData, d => d.price)]);
+    // x and y scales
+    const xScale = d3.scaleBand()
+      .range([0, boundsWidth])
+      .domain(allXGroups)
+      .padding(0.01);
 
- // Step 2: Build the Heatmap
- const width = 800;  // SVG width
- const height = 800; // SVG height
- const cellSize = 20; // Size of each heatmap cell
+    const yScale = d3.scaleBand()
+      .range([boundsHeight, 0])
+      .domain(allYGroups)
+      .padding(0.01);
 
- const svg = d3.select(svgRef.current)
-   .attr('width', width)
-   .attr('height', height);
+    // Calculate min and max values
+    const [min, max] = d3.extent(landData, d => d.price);
 
- // Bind data to the SVG and create `rect` for each data point
- svg.selectAll('rect')
-   .data(landData)
-   .enter()
-   .append('rect')
-   .attr('x', d => d.x * cellSize)         // x position
-   .attr('y', d => d.y * cellSize)         // y position
-   .attr('width', cellSize)                // width of cell
-   .attr('height', cellSize)               // height of cell
-   .attr('fill', d => colorScale(d.price)) // fill color based on price
-   .attr('stroke', '#ccc')                 // add a stroke to each cell
-   .on('mouseover', function () {
-     d3.select(this)
-       .attr('stroke', '#000')             // highlight stroke on hover
-       .attr('stroke-width', 2);
-   })
-   .on('mouseout', function () {
-     d3.select(this)
-       .attr('stroke', '#ccc')             
-       .attr('stroke-width', 1);
-   });
+    if (!min || !max) {
+      return null;
+    }
 
-}, [loading, error, data]);
+    // Update color scale
+    const newColorScale = d3.scaleSequential()
+      .interpolator(d3.interpolateInferno)
+      .domain([min, max]);
 
-  // Handle loading and error states in the render
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+    setColorScale(newColorScale);
+
+    // Build rectangles
+    const allRects = landData.map((d, i) => {
+      return (
+        <rect
+          key={i}
+          r={4}
+          x={xScale(d.x)}
+          y={yScale(d.y)}
+          width={xScale.bandwidth()}
+          height={yScale.bandwidth()}
+          opacity={1}
+          fill={newColorScale(d.price)}
+          rx={5}
+          stroke={"white"}
+        />
+      );
+    });
+
+    setRectangles(allRects);
+    
+    // Create xLabels and yLabels
+    const newXLabels = allXGroups.map((name, i) => {
+      const xPos = xScale(name) ?? 0;
+      return (
+        <text
+          key={i}
+          x={xPos + xScale.bandwidth() / 2}
+          y={height - MARGIN.bottom + 10}
+          textAnchor="middle"
+          dominantBaseline="middle"
+          fontSize={10}
+        >
+          {name}
+        </text>
+      );
+    });
+
+    const newYLabels = allYGroups.map((name, i) => {
+      const yPos = yScale(name) ?? 0;
+      return (
+        <text
+          key={i}
+          x={-5}
+          y={yPos + yScale.bandwidth() / 2}
+          textAnchor="end"
+          dominantBaseline="middle"
+          fontSize={10}
+        >
+          {name}
+        </text>
+      );
+    });
+
+    setXLabels(newXLabels);
+    setYLabels(newYLabels);
+  }, [loading, error, data]); 
 
   return (
     <div>
-      <p>Heat Map</p>
-      <svg ref={svgRef}></svg>
+      
+      <svg width="1000" height="1000"> {/* Changed from 1000px to 1000 for consistency */}
+        <g
+          transform={`translate(${MARGIN.left}, ${MARGIN.top})`} // Simplified the translation
+        >
+          {rectangles}
+          {xLabels}
+          {yLabels}
+        </g>
+      </svg>
     </div>
   );
 };
