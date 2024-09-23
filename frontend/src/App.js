@@ -15,6 +15,7 @@ function App() {
     <div className="App">
       <LandingPage />
       <LeaderBoard />
+
       
     </div>
     </ApolloProvider>
