@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import LandingPage from './components/LandingPage';
 import LeaderBoard from './components/LeaderBoard';
+import HeatMap from './components/HeatMap';
+
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 const client = new ApolloClient({
@@ -15,6 +17,7 @@ function App() {
     <div className="App">
       <LandingPage />
       <LeaderBoard />
+      <HeatMap />
 
       
     </div>
