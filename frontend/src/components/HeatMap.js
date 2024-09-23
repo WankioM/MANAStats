@@ -5,7 +5,7 @@ import { useQuery, gql } from '@apollo/client';
 
 const GET_BID_DATA = gql`
   query {
-    bidSuccessfuls {
+    bidSuccessfuls{
       _pricePerLandInMana
       _xs
       _ys
@@ -23,8 +23,8 @@ const Heatmap = () => {
   const [colorScale, setColorScale] = useState(() => d3.scaleSequential().interpolator(d3.interpolateInferno).domain([0, 1])); // Initial color scale
 
   const MARGIN = { top: 10, right: 10, bottom: 30, left: 30 };
-  const width = 1000;
-  const height = 1000;
+  const width = 900;
+  const height = 900;
 
   useEffect(() => {
     if (loading || error) return; // Prevent execution if loading or error
@@ -40,6 +40,13 @@ const Heatmap = () => {
           beneficiary: plot._beneficiary // beneficiary info if needed later
         });
       });
+    });
+
+    landData.sort((a, b) => {
+      if (a.x === b.x) {
+        return a.y - b.y; // Sort by y if x is the same
+      }
+      return a.x - b.x; // Otherwise, sort by x
     });
 
     // Optional: Store `landData` into variables for further use or debugging
@@ -91,11 +98,11 @@ const Heatmap = () => {
           r={4}
           x={xScale(d.x)}
           y={yScale(d.y)}
-          width={xScale.bandwidth()}
-          height={yScale.bandwidth()}
-          opacity={1}
+          width={xScale.bandwidth()*2}
+          height={yScale.bandwidth()*2}
+          opacity={0.9}
           fill={newColorScale(d.price)}
-          rx={5}
+          rx={2}
           stroke={"white"}
         />
       );
@@ -103,14 +110,13 @@ const Heatmap = () => {
 
     setRectangles(allRects);
     
-    // Create xLabels and yLabels
-    const newXLabels = allXGroups.map((name, i) => {
+    const newXLabels = allXGroups.filter((_, i) => i % 5 === 0).map((name, i) => {
       const xPos = xScale(name) ?? 0;
       return (
         <text
           key={i}
           x={xPos + xScale.bandwidth() / 2}
-          y={height - MARGIN.bottom + 10}
+          y={height - MARGIN.bottom + 20} // y position for x labels
           textAnchor="middle"
           dominantBaseline="middle"
           fontSize={10}
@@ -120,12 +126,12 @@ const Heatmap = () => {
       );
     });
 
-    const newYLabels = allYGroups.map((name, i) => {
+    const newYLabels = allYGroups.filter((_, i) => i % 5 === 0).map((name, i) => {
       const yPos = yScale(name) ?? 0;
       return (
         <text
           key={i}
-          x={-5}
+          x={-10} // Adjusted x position for y labels
           y={yPos + yScale.bandwidth() / 2}
           textAnchor="end"
           dominantBaseline="middle"
@@ -141,7 +147,13 @@ const Heatmap = () => {
   }, [loading, error, data]); 
 
   return (
-    <div>
+    <div className='map'>
+      <p> Heat Map</p>
+
+      <p>
+        This interactive visualization highlights the land plots that received the highest bids in recent auctions. Each colored rectangle represents a specific plot of land, with the intensity of the color indicating the bid amount—darker shades signify higher bids. Explore the map to discover which locations are most sought after, helping you make informed decisions in your land investments. 
+      </p>
+
       
       <svg width="1000" height="1000"> {/* Changed from 1000px to 1000 for consistency */}
         <g
@@ -152,8 +164,9 @@ const Heatmap = () => {
           {yLabels}
         </g>
       </svg>
-    </div>
-  );
+
+        </div>
+      );
 };
 
 export default Heatmap;
