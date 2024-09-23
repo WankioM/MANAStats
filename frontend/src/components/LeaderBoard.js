@@ -46,7 +46,8 @@ const LeaderBoard = () => {
             {/* Bids from 3rd to 15th position */}
             <div className='rowheadings'>
             <p>Rank </p>
-            <p>Bidder </p>
+            <p>Bidder</p>
+            <p>Icon </p>
             <p>Bid Price </p>
             <p>Location </p>
 
