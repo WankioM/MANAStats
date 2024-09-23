@@ -1,11 +1,13 @@
 :root {
-  --old-rose: #CC7178;
+    --old-rose: #CC7178;
   --chocolate-cosmos: #511c29;
   --bone: #d0ceba;
 }
 
 .App {
   text-align: center;
+  height: 100vh;
+  width: 100%;
 }
 
 .App-logo {
@@ -41,4 +43,11 @@
   to {
     transform: rotate(360deg);
   }
+}
+.App{
+  background-image: url("C:\Users\Administrator\Desktop\decentraland\MANAStats\frontend\src\cole-keister-SG4fPCsywj4-unsplash.jpg");
+  background-size: cover;
+  margin: 0;
+  height: 100vh;
+  background-position: center;
 }

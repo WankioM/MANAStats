@@ -4,10 +4,12 @@ import PodiumCard from './PodiumCard';
 const LeaderBoard = () => {
   return (
     <div className="leaderboard">
-      <p> Leaderboard </p>
+      <div className='Cards'>
       <PodiumCard />
       <PodiumCard />
       <PodiumCard />
+      </div>
+
     </div>
   );
 };
