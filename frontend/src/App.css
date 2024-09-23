@@ -7,7 +7,7 @@
 .App {
   text-align: center;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
 }
 
 .App-logo {
@@ -45,8 +45,11 @@
   }
 }
 .App{
-  background-size: cover;
+  
   margin: 0;
-  height: 100vh;
+  height: 380vh;
+  width: 100vw;
   background-position: center;
+  background-image: linear-gradient(to right, #cc7178, #b46069, #9c4f5a, #853f4b, #6e303c, #71373c, #733f3d, #74463f, #8b6756, #a18972, #b8ab94, #d0ceba);
+
 }

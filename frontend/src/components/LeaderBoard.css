@@ -3,9 +3,6 @@
     flex-direction: row;
     justify-content: space-between;
     
-
-
-
 }
 .leaderboard{
     padding: 20px;
@@ -15,5 +12,26 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
     width: 80vw;
     margin-left: 60px;
-
+}
+.Rows{
+    background-color: white; 
+    border: 1px solid #ddd;
+    border-radius:10px;
+    padding: 20px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    margin: 10px; 
+    display: flex;
+    flex-direction: column
+}
+.rowheadings{
+    background-color: white; 
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    margin: 10px; 
+    display: flex ; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: center; 
 }
