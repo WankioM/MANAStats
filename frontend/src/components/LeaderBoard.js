@@ -44,6 +44,14 @@ const LeaderBoard = () => {
       
       <div className='Rows'>
             {/* Bids from 3rd to 15th position */}
+            <div className='rowheadings'>
+            <p>Rank </p>
+            <p>Bidder </p>
+            <p>Bid Price </p>
+            <p>Location </p>
+
+            </div>
+            
             {restOfTheBids.map((bid, index) => (
               <LeaderBoardRow key={bid.id} bid={bid} position={index + 4} />
             ))}
