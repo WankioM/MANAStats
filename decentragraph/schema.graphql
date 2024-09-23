@@ -1,16 +1,146 @@
-type Upgrade @entity(immutable: true) {
+type AuctionCreated @entity(immutable: true) {
   id: Bytes!
-  newContract: Bytes! # address
-  initializedWith: Bytes! # bytes
+  _caller: Bytes! # address
+  _startTime: BigInt! # uint256
+  _duration: BigInt! # uint256
+  _initialPrice: BigInt! # uint256
+  _endPrice: BigInt! # uint256
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
 
-type OwnerUpdate @entity(immutable: true) {
+type BidConversion @entity(immutable: true) {
   id: Bytes!
-  _prevOwner: Bytes! # address
-  _newOwner: Bytes! # address
+  _bidId: BigInt! # uint256
+  _token: Bytes! # address
+  _requiredManaAmountToBurn: BigInt! # uint256
+  _amountOfTokenConverted: BigInt! # uint256
+  _requiredTokenBalance: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type BidSuccessful @entity(immutable: true) {
+  id: Bytes!
+  _bidId: BigInt! # uint256
+  _beneficiary: Bytes! # address
+  _token: Bytes! # address
+  _pricePerLandInMana: BigInt! # uint256
+  _manaAmountToBurn: BigInt! # uint256
+  _xs: [BigInt!]! # int256[]
+  _ys: [BigInt!]! # int256[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type AuctionFinished @entity(immutable: true) {
+  id: Bytes!
+  _caller: Bytes! # address
+  _time: BigInt! # uint256
+  _pricePerLandInMana: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TokenBurned @entity(immutable: true) {
+  id: Bytes!
+  _bidId: BigInt! # uint256
+  _token: Bytes! # address
+  _total: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TokenTransferred @entity(immutable: true) {
+  id: Bytes!
+  _bidId: BigInt! # uint256
+  _token: Bytes! # address
+  _to: Bytes! # address
+  _total: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type LandsLimitPerBidChanged @entity(immutable: true) {
+  id: Bytes!
+  _caller: Bytes! # address
+  _oldLandsLimitPerBid: BigInt! # uint256
+  _landsLimitPerBid: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GasPriceLimitChanged @entity(immutable: true) {
+  id: Bytes!
+  _caller: Bytes! # address
+  _oldGasPriceLimit: BigInt! # uint256
+  _gasPriceLimit: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DexChanged @entity(immutable: true) {
+  id: Bytes!
+  _caller: Bytes! # address
+  _oldDex: Bytes! # address
+  _dex: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TokenAllowed @entity(immutable: true) {
+  id: Bytes!
+  _caller: Bytes! # address
+  _address: Bytes! # address
+  _decimals: BigInt! # uint256
+  _shouldBurnTokens: Boolean! # bool
+  _shouldForwardTokens: Boolean! # bool
+  _forwardTarget: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TokenDisabled @entity(immutable: true) {
+  id: Bytes!
+  _caller: Bytes! # address
+  _address: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ConversionFeeChanged @entity(immutable: true) {
+  id: Bytes!
+  _caller: Bytes! # address
+  _oldConversionFee: BigInt! # uint256
+  _conversionFee: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipRenounced @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!

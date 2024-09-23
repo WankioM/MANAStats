@@ -16,14 +16,50 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - Upgrade
-        - OwnerUpdate
+        - AuctionCreated
+        - BidConversion
+        - BidSuccessful
+        - AuctionFinished
+        - TokenBurned
+        - TokenTransferred
+        - LandsLimitPerBidChanged
+        - GasPriceLimitChanged
+        - DexChanged
+        - TokenAllowed
+        - TokenDisabled
+        - ConversionFeeChanged
+        - OwnershipRenounced
+        - OwnershipTransferred
       abis:
         - name: Contract
           file: ./abis/Contract.json
       eventHandlers:
-        - event: Upgrade(indexed address,bytes)
-          handler: handleUpgrade
-        - event: OwnerUpdate(address,address)
-          handler: handleOwnerUpdate
+        - event: AuctionCreated(indexed address,uint256,uint256,uint256,uint256)
+          handler: handleAuctionCreated
+        - event: BidConversion(uint256,indexed address,uint256,uint256,uint256)
+          handler: handleBidConversion
+        - event: BidSuccessful(uint256,indexed address,indexed address,uint256,uint256,int256[],int256[])
+          handler: handleBidSuccessful
+        - event: AuctionFinished(indexed address,uint256,uint256)
+          handler: handleAuctionFinished
+        - event: TokenBurned(uint256,indexed address,uint256)
+          handler: handleTokenBurned
+        - event: TokenTransferred(uint256,indexed address,indexed address,uint256)
+          handler: handleTokenTransferred
+        - event: LandsLimitPerBidChanged(indexed address,uint256,uint256)
+          handler: handleLandsLimitPerBidChanged
+        - event: GasPriceLimitChanged(indexed address,uint256,uint256)
+          handler: handleGasPriceLimitChanged
+        - event: DexChanged(indexed address,indexed address,indexed address)
+          handler: handleDexChanged
+        - event: TokenAllowed(indexed address,indexed address,uint256,bool,bool,indexed address)
+          handler: handleTokenAllowed
+        - event: TokenDisabled(indexed address,indexed address)
+          handler: handleTokenDisabled
+        - event: ConversionFeeChanged(indexed address,uint256,uint256)
+          handler: handleConversionFeeChanged
+        - event: OwnershipRenounced(indexed address)
+          handler: handleOwnershipRenounced
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
       file: ./src/contract.ts
