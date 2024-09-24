@@ -130,6 +130,7 @@ const HeatmapVer2 = () => {
 
   return (
     <div>
+      <p>Heat Map</p>
       <p>
         This grid shows the land plot coordinates. The faint grey lines represent the grid for organizing the land data, with each grid box representing a 5x5 area on DecentraLand.
       </p>
