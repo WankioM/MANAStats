@@ -17,6 +17,21 @@ Check out the live application here: [MANA Stats](https://mana-stats.vercel.app/
    git clone <repository-url>
    cd <repository-directory>
 
+2. Install the dependencies:
+
+    ```bash
+    npm install
+
+3. Build the project:
+
+    ``bash
+    npm run build
+
+4. Serve the build:
+
+    ```bash
+    serve -s build
+
 ##Created By
 * Tracy Wankio - tracywankio29@gmail.com
 * Joyce Njeri - njeriwangumo@gmail.com
