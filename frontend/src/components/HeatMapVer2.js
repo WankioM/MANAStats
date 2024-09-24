@@ -81,19 +81,38 @@ const HeatmapVer2 = () => {
         .attr("stroke-width", 1);
     }
 
-    landData.forEach(({ x, y, price }) => {
-      svg.append("rect")
-        .attr("x", xScale(x) - 10) // Adjust position based on the scaling and square size
-        .attr("y", yScale(y) - 10) // Adjust position based on the scaling and square size
-        .attr("width", 20) // Width of each square
-        .attr("height", 20) // Height of each square
-        .attr("rx", 5) // Rounded corners (horizontal radius)
-        .attr("ry", 5) // Rounded corners (vertical radius)
-        .attr("fill", colorScale(price)) // Use the color scale to determine the color
-        .attr("fill-opacity", 0.7) // Set the opacity of the fill color
-        .attr("stroke", "white") // Set the border color to white
-        .attr("stroke-width", 0.5); // Set the border width
+    // Add this inside your useEffect after defining the landData
+
+const tooltip = d3.select("#tooltip");
+
+landData.forEach(({ x, y, price }) => {
+  svg.append("rect")
+    .attr("x", xScale(x) - 10) // Adjust position based on the scaling and square size
+    .attr("y", yScale(y) - 10) // Adjust position based on the scaling and square size
+    .attr("width", 20) // Width of each square
+    .attr("height", 20) // Height of each square
+    .attr("rx", 5) // Rounded corners
+    .attr("ry", 5) // Rounded corners
+    .attr("fill", colorScale(price)) // Use the color scale to determine the color
+    .attr("fill-opacity", 0.7) // Set the opacity of the fill color
+    .attr("stroke", "white") // Set the border color to white
+    .attr("stroke-width", 0.5) // Set the border width
+    .on("mouseover", function(event) {
+      d3.select("#tooltip")
+        .style("visibility", "visible")
+        .html(`<img src='https://cdn3d.iconscout.com/3d/premium/thumb/mana-4721557-3921417.png?f=webp' style="width: 15px; height: 15px; vertical-align: middle;" />  ${price}`) // Set tooltip content to include the image
+        .style("left", (event.pageX + 5) + "px") // Position tooltip
+        .style("top", (event.pageY - 28) + "px");
+    })
+    .on("mousemove", (event) => {
+      // Update tooltip position on mouse move
+      tooltip.style("top", `${event.pageY + 10}px`).style("left", `${event.pageX + 10}px`);
+    })
+    .on("mouseout", () => {
+      tooltip.style("visibility", "hidden");
     });
+});
+
     
 
     // Create x-axis with ticks every 5 units
@@ -129,12 +148,17 @@ const HeatmapVer2 = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div>
+    <div className='map'>
       <p>Heat Map</p>
       <p>
         This grid shows the land plot coordinates. The faint grey lines represent the grid for organizing the land data, with each grid box representing a 5x5 area on DecentraLand.
       </p>
       <svg ref={svgRef}></svg>
+      <div id="tooltip" style={{ position: "absolute",
+         visibility: "hidden", 
+         backgroundColor: "rgba(255, 255, 255, 0.7)", 
+         border: "1px solid black", padding: "5px", borderRadius: "3px", pointerEvents: "none" }} />
+
     </div>
   );
 };
