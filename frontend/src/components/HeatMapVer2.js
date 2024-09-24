@@ -132,6 +132,7 @@ landData.forEach(({ x, y, price }) => {
       .attr("x", ((maxX / 5) * 20) / 2 + 50) // Center the label horizontally
       .attr("y", (maxY / 5) * 20 + 90) // Position the label below the axis
       .attr("text-anchor", "middle")
+      .style("font-size", "18px") 
       .text("X Coordinate");
 
     // Add y-axis label
@@ -140,6 +141,7 @@ landData.forEach(({ x, y, price }) => {
       .attr("y", 15) // Position near the y-axis
       .attr("transform", "rotate(-90)") // Rotate the text to align vertically
       .attr("text-anchor", "middle")
+      .style("font-size", "18px") 
       .text("Y Coordinate");
 
   }, [loading, error, data]);

@@ -9,13 +9,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
-     
-
-}
-
-.address {
-=======
     background: rgba(255, 255, 255, 0.1); 
     border-radius: 15px ;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -35,7 +28,6 @@
 .card-body,
 .card-body p,
 .card-body span {
->>>>>>> 5e613f68ab5409634b076b370b95deb6fd01befb
     max-width: 100%;
     font-size: 14px;
     color: black;
