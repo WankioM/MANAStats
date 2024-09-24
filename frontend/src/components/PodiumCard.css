@@ -1,6 +1,6 @@
 .podiumcard {
-    margin: 50px;
-    max-width: 45vh;
+    margin: 30px;
+    max-width: 33vw;
     margin-left: none;
     flex: 1;
     height: auto;
@@ -28,7 +28,7 @@
 }
 
 
-.cardbody,
+.card-body,
 .card-body p,
 .card-body span {
     max-width: 100%;
@@ -37,16 +37,22 @@
     overflow-wrap: break-word; 
     white-space: normal;
     word-break: break-all; 
+    padding:2px;
+    padding-left:4px;
+    padding-right:4px;
 }
 
 .pricechild{
     display:flex;
     align-items: center; 
     justify-content: center;
+    
 }
 
 .location{
     display:flex;
     align-items: center; 
     justify-content: center;
+    padding:8px;
+    gap:12px;
 }

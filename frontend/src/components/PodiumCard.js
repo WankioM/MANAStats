@@ -1,21 +1,15 @@
 import React from 'react';
 import './PodiumCard.css'; 
 import { FaMapMarkerAlt } from 'react-icons/fa';
+import { FaCertificate } from 'react-icons/fa';
+import { FaMedal } from 'react-icons/fa';
 
 const PodiumCard = ({ bid, position }) => {
   return (
     <div className="card podiumcard">
       <div className="card-header">
 
-        <img 
-          src="https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Trophy-and-Medals-PNG/Gold_Cup_Transparent_Image.png?m=1629819139"
-          alt="Position Icon"
-          className="position-icon"
-          style={{
-            maxWidth: "50px", 
-            maxHeight: "50px"
-          }} 
-        />
+        <FaMedal style={{ color: 'gold', fontSize: '48px', paddingTop: '10px' }} />
 
         <h2 className="hrank">{position}</h2>
       </div>
@@ -41,7 +35,7 @@ const PodiumCard = ({ bid, position }) => {
             
           <div className="location">
             <FaMapMarkerAlt style={{ color: 'white', fontSize: '18px' }} />
-            <span className="hlocation"> ({bid._xs[0]}, {bid._ys[0]})</span>
+            <span className="hlocation">  ({bid._xs[0]}, {bid._ys[0]})</span>
           </div>
 
         </div>
