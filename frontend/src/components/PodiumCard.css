@@ -3,7 +3,7 @@
     max-width: 45vh;
     margin-left: none;
     flex: 1;
-    height: 210px;
+    height: 35vh;
     padding: 5px;
     backdrop-filter: blur(10px);
     border-radius: 15px;
@@ -19,6 +19,7 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fff; 
     font-family: 'Orbiton', sans-serif;
+    overflow: hidden;
 
 }
 .hrank{
@@ -30,4 +31,12 @@
     word-wrap:break-word; 
     overflow-wrap: break-word;
     white-space: normal;
+}
+
+.cardbody,
+.card-body p{
+    font-size:14px;
+ color: black;
+  overflow-wrap: break-word; /* Modern browsers */
+  white-space: normal;
 }
