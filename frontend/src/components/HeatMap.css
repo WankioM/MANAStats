@@ -2,10 +2,15 @@
     margin-top:100px;
     margin-bottom:100px;
     font-family: 'Fira Code', monospace;
-    color: #ffd700; 
+    color: #fafafa; 
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
-    font-size: 200%;
+    font-size: 150%;
     
+}
+.map p{
+  padding-left: 70px;
+  padding-right: 70px; 
+  ;
 }
 
 .legend {
@@ -19,6 +24,7 @@
 
 #tooltip {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    font-size: 11px;
   }
   
   
