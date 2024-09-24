@@ -24,15 +24,18 @@ const PodiumCard = ({ bid, position }) => {
         <p className="hbidder">Bidder: {bid._beneficiary}</p>
           <div className="info">
             <div className="bid-price">
-            <img 
-              src="https://cdn3d.iconscout.com/3d/premium/thumb/mana-4721557-3921417.png?f=webp" 
-              style={{
-                maxWidth: "50px", 
-                maxHeight: "50px"
-              }} 
-            />
+            
 
-              <span className="hbidprice">Bid Price: {bid._pricePerLandInMana}</span>
+              <span className="hbidprice">Bid Price</span>
+              <div className='pricechild'> 
+                <img 
+                src="https://cdn3d.iconscout.com/3d/premium/thumb/mana-4721557-3921417.png?f=webp" 
+                style={{
+                  maxWidth: "30px", 
+                  maxHeight: "30px"
+                }} 
+              />
+              <span className= 'liftspan'>{bid._pricePerLandInMana}</span></div>
             </div>
             
           <div className="location">

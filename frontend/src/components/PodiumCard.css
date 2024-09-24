@@ -26,17 +26,25 @@
     color: black
     
 }
-.address {
-    max-width: 100%;
-    word-wrap:break-word; 
-    overflow-wrap: break-word;
-    white-space: normal;
-}
+
 
 .cardbody,
-.card-body p{
-    font-size:14px;
- color: black;
-  overflow-wrap: break-word; /* Modern browsers */
-  white-space: normal;
+.card-body p,
+.card-body span {
+    max-width: 100%;
+    font-size: 14px;
+    color: black;
+    overflow-wrap: break-word; 
+    white-space: normal;
+    word-break: break-all; 
+}
+
+.liftspan{
+    padding-bottom: 10px;
+    margin-bottom:10px;
+
+}
+
+.pricechild{
+    align-items: center; 
 }
