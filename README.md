@@ -14,8 +14,8 @@ Check out the live application here: [MANA Stats](https://mana-stats.vercel.app/
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd <repository-directory>
+   git clone https://github.com/WankioM/MANAStats.git
+   cd MANAStats
 
 2. Install the dependencies:
 
@@ -24,7 +24,7 @@ Check out the live application here: [MANA Stats](https://mana-stats.vercel.app/
 
 3. Build the project:
 
-    ``bash
+    ```bash
     npm run build
 
 4. Serve the build:
@@ -32,6 +32,6 @@ Check out the live application here: [MANA Stats](https://mana-stats.vercel.app/
     ```bash
     serve -s build
 
-##Created By
+## Created By
 * Tracy Wankio - tracywankio29@gmail.com
 * Joyce Njeri - njeriwangumo@gmail.com
