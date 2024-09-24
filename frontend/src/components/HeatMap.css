@@ -10,4 +10,10 @@
     background-color: #f9f9f9;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
   }
+
+
+#tooltip {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
   
