@@ -21,7 +21,8 @@ const PodiumCard = ({ bid, position }) => {
       </div>
 
       <div className="card-body">
-        <p className="hbidder">Bidder: {bid._beneficiary}</p>
+        <p className="hbidder">Bidder</p>
+        <p className="hbidder"> {bid._beneficiary}</p>
           <div className="info">
             <div className="bid-price">
             
