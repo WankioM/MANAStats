@@ -1,21 +1,63 @@
 .podiumcard {
-    margin: 50px;
-    max-width: 45vh;
+    margin: 30px;
+    max-width: 33vw;
     margin-left: none;
     flex: 1;
-    height: 210px;
+    height: auto;
     padding: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+<<<<<<< HEAD
      
 
 }
 
 .address {
+=======
+    background: rgba(255, 255, 255, 0.1); 
+    border-radius: 15px ;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff; 
+    font-family: 'Orbiton', sans-serif;
+    overflow: hidden;
+
+}
+.hrank{
+    color: black
+    
+}
+
+
+.card-body,
+.card-body p,
+.card-body span {
+>>>>>>> 5e613f68ab5409634b076b370b95deb6fd01befb
     max-width: 100%;
-    word-wrap:break-word; 
-    overflow-wrap: break-word;
+    font-size: 14px;
+    color: black;
+    overflow-wrap: break-word; 
     white-space: normal;
+    word-break: break-all; 
+    padding:2px;
+    padding-left:4px;
+    padding-right:4px;
+}
+
+.pricechild{
+    display:flex;
+    align-items: center; 
+    justify-content: center;
+    
+}
+
+.location{
+    display:flex;
+    align-items: center; 
+    justify-content: center;
+    padding:8px;
+    gap:12px;
 }

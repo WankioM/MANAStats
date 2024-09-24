@@ -23,7 +23,11 @@
     background-color:none;
   }
   .leaderboardrow {
+<<<<<<< HEAD
     border: 1px solid; 
+=======
+    background-color: rgb(193, 183, 183); 
+>>>>>>> 5e613f68ab5409634b076b370b95deb6fd01befb
     border-radius: 10px;
     padding: 20px; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
@@ -33,3 +37,15 @@
     justify-content: space-between; 
     align-items: center; 
 }
+<<<<<<< HEAD
+=======
+.pimage {
+  background-image:url("https://www.flaticon.com/free-icon/coin_14563581");
+}
+
+.pricediv{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+>>>>>>> 5e613f68ab5409634b076b370b95deb6fd01befb
