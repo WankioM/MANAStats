@@ -20,7 +20,7 @@
 
 }
 .hrank{
-    color: black
+    color: rgb(9, 9, 9)
     
 }
 
@@ -37,6 +37,7 @@
     padding:2px;
     padding-left:4px;
     padding-right:4px;
+    font-family: 'Fira Code', monospace;
 }
 
 .pricechild{

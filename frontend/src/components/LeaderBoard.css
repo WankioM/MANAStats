@@ -24,11 +24,15 @@
 .rowheadings{
 
     border-radius: 10px;
+    background-color: rgba(95, 32, 44, 0.3);
     padding: 20px; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
     margin: 10px; 
     display: flex ; 
     flex-direction: row; 
     justify-content: space-between; 
-    align-items: center; 
+    align-items: center;
+    font-family: 'Fira Code', monospace;
+    color: #ffd700; 
+     
 }

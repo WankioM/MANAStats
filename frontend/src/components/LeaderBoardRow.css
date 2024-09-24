@@ -39,7 +39,12 @@
     flex-direction: row; 
     justify-content: space-between; 
     align-items: center; 
+    font-family: 'Fira Code', monospace;
 }
+.leaderboardrow:hover {
+  background-color: rgba(95, 32, 44, 0.3)
+}
+  
 .pimage {
   background-image:url("https://www.flaticon.com/free-icon/coin_14563581");
 }
