@@ -1,8 +1,19 @@
 .landing-page {
-    font-family: 'Orbiton', sans-serif; 
-    color: #ffd700; 
-    font-size: 2.5em; 
-    text-align: center; 
+    padding-top: 2%;
     margin-bottom: 20px; 
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+}
+
+.heading1 {
+    font-family: 'Fira Code', monospace;
+    color: #ffd700; 
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+    font-size: 200%;
+    
+}
+.heading2 {
+    color: black;
+    font-size: 18px;
+    text-align: right;
+    padding: none;
 }
