@@ -14,6 +14,29 @@ const GET_BID_DATA = gql`
   }
 `;
 
+const Renderer = ({ rectangles, xScale, yScale, colorScale }) => (
+    <>
+      {rectangles.map((rect, i) => (
+        <rect
+          key={i}
+          {...rect}
+          onMouseEnter={(e) => {
+            const tooltip = document.getElementById('tooltip');
+            tooltip.style.left = `${e.clientX}px`;
+            tooltip.style.top = `${e.clientY}px`;
+            tooltip.style.display = 'block';
+            tooltip.innerHTML = `Price: ${rect.price} MANA`;
+          }}
+          onMouseLeave={() => {
+            const tooltip = document.getElementById('tooltip');
+            tooltip.style.display = 'none';
+          }}
+        />
+      ))}
+    </>
+  );
+
+
 const Heatmap = () => {
   const svgRef = useRef();
   const { loading, error, data } = useQuery(GET_BID_DATA);
@@ -98,9 +121,9 @@ const Heatmap = () => {
           r={4}
           x={xScale(d.x)}
           y={yScale(d.y)}
-          width={xScale.bandwidth()*2}
-          height={yScale.bandwidth()*2}
-          opacity={0.9}
+          width={xScale.bandwidth()*3}
+          height={yScale.bandwidth()*3}
+          opacity={0.7}
           fill={newColorScale(d.price)}
           rx={2}
           stroke={"white"}
