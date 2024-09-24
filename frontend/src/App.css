@@ -45,10 +45,9 @@
   }
 }
 .App{
-  
-  margin: 0;
   height: 380vh;
   width: 100vw;
+  min-height:100vh;
   background-position: center;
   background-image: linear-gradient(to right, #cc7178, #b46069, #9c4f5a, #853f4b, #6e303c, #71373c, #733f3d, #74463f, #8b6756, #a18972, #b8ab94, #d0ceba);
 

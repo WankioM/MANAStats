@@ -5,6 +5,7 @@ import LeaderBoard from './components/LeaderBoard';
 import HeatMap from './components/HeatMap';
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import HeatMapVer2 from './components/HeatMapVer2';
 
 const client = new ApolloClient({
   uri: 'https://api.studio.thegraph.com/query/89211/decentragraph/version/latest', 
@@ -17,7 +18,7 @@ function App() {
     <div className="App">
       <LandingPage />
       <LeaderBoard />
-      <HeatMap />
+      <HeatMapVer2 />
 
       
     </div>
