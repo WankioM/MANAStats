@@ -38,8 +38,6 @@ const LeaderBoard = () => {
           <PodiumCard key={bid.id} bid={bid} position={index + 1} />
         ))}
 
-        
-
       </div>
       
       <div className='Rows'>
@@ -47,10 +45,8 @@ const LeaderBoard = () => {
             <div className='rowheadings'>
             <p>Rank </p>
             <p>Bidder</p>
-            <p>Icon </p>
             <p>Bid Price </p>
-            <p>Location </p>
-
+            <p img src="https://img.icons8.com/ios/50/address--v1.png" alt="Location">Location </p>
             </div>
             
             {restOfTheBids.map((bid, index) => (
