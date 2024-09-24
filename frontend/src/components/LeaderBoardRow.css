@@ -30,7 +30,7 @@
   }
   .leaderboardrow {
     background-color: rgb(193, 183, 183); 
-    border: 1px solid #ddd;
+    border: 1px solid; 
     border-radius: 10px;
     padding: 20px; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
