@@ -176,6 +176,7 @@ const Heatmap = () => {
       <p>
         This interactive visualization highlights the land plots that received the highest bids in recent auctions. Each colored rectangle represents a specific plot of land, with the intensity of the color indicating the bid amount—darker shades signify higher bids. Explore the map to discover which locations are most sought after, helping you make informed decisions in your land investments. 
       </p>
+      <span>The colors represent bid activity</span>
 
       
       <svg width="1000" height="1000"> {/* Changed from 1000px to 1000 for consistency */}
