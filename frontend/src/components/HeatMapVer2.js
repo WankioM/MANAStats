@@ -87,25 +87,25 @@ const tooltip = d3.select("#tooltip");
 
 landData.forEach(({ x, y, price }) => {
   svg.append("rect")
-    .attr("x", xScale(x) - 10) // Adjust position based on the scaling and square size
-    .attr("y", yScale(y) - 10) // Adjust position based on the scaling and square size
-    .attr("width", 20) // Width of each square
-    .attr("height", 20) // Height of each square
-    .attr("rx", 5) // Rounded corners
-    .attr("ry", 5) // Rounded corners
-    .attr("fill", colorScale(price)) // Use the color scale to determine the color
-    .attr("fill-opacity", 0.7) // Set the opacity of the fill color
-    .attr("stroke", "white") // Set the border color to white
-    .attr("stroke-width", 0.5) // Set the border width
+    .attr("x", xScale(x) - 10) 
+    .attr("y", yScale(y) - 10) 
+    .attr("width", 20) 
+    .attr("height", 20) 
+    .attr("rx", 5) 
+    .attr("ry", 5)
+    .attr("fill", colorScale(price))
+    .attr("fill-opacity", 0.7)
+    .attr("stroke", "white") 
+    .attr("stroke-width", 0.5)
     .on("mouseover", function(event) {
       d3.select("#tooltip")
         .style("visibility", "visible")
         .html(`<img src='https://cdn3d.iconscout.com/3d/premium/thumb/mana-4721557-3921417.png?f=webp' style="width: 15px; height: 15px; vertical-align: middle;" />  ${price}`) // Set tooltip content to include the image
-        .style("left", (event.pageX + 5) + "px") // Position tooltip
+        .style("left", (event.pageX + 5) + "px") 
         .style("top", (event.pageY - 28) + "px");
     })
     .on("mousemove", (event) => {
-      // Update tooltip position on mouse move
+     
       tooltip.style("top", `${event.pageY + 10}px`).style("left", `${event.pageX + 10}px`);
     })
     .on("mouseout", () => {
@@ -115,31 +115,31 @@ landData.forEach(({ x, y, price }) => {
 
     
 
-    // Create x-axis with ticks every 5 units
+  
     const xAxis = d3.axisBottom(xScale).ticks(maxX / 5).tickValues(d3.range(0, maxX, 5));
     svg.append("g")
       .attr("transform", `translate(0, ${(maxY / 5) * 20 + 50})`)  // Position below grid
       .call(xAxis);
 
-    // Create y-axis with ticks every 5 units
+
     const yAxis = d3.axisLeft(yScale).ticks(maxY / 5).tickValues(d3.range(0, maxY, 5));
     svg.append("g")
-      .attr("transform", `translate(50, 0)`)  // Position to the left of the grid
+      .attr("transform", `translate(50, 0)`) 
       .call(yAxis);
 
-    // Add x-axis label
+
     svg.append("text")
-      .attr("x", ((maxX / 5) * 20) / 2 + 50) // Center the label horizontally
-      .attr("y", (maxY / 5) * 20 + 90) // Position the label below the axis
+      .attr("x", ((maxX / 5) * 20) / 2 + 50) 
+      .attr("y", (maxY / 5) * 20 + 90) 
       .attr("text-anchor", "middle")
       .style("font-size", "18px") 
       .text("X Coordinate");
 
-    // Add y-axis label
+   
     svg.append("text")
-      .attr("x", -((maxY / 5) * 20) / 2 - 50) // Center the label vertically, but flipped due to rotation
-      .attr("y", 15) // Position near the y-axis
-      .attr("transform", "rotate(-90)") // Rotate the text to align vertically
+      .attr("x", -((maxY / 5) * 20) / 2 - 50)
+      .attr("y", 15) 
+      .attr("transform", "rotate(-90)")
       .attr("text-anchor", "middle")
       .style("font-size", "18px") 
       .text("Y Coordinate");

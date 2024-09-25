@@ -41,14 +41,9 @@
   }
 }
 .App{
-  width: 100vw;
-  
+  width: 100vw;  
   background-position: center;
   background-image: linear-gradient(to left bottom, #2a1b24, #3a1f23, #45271d, #483316, #404116, #40451b, #3f4920, #3f4d26, #4b4829, #504531, #4f433a, #494341);
-  /*background-image: linear-gradient(to left bottom, #2a1b24, #351d20, #3b2219, #3a2a13, #323312, #333717, #333a1b, #343e20, #403e25, #483e2e, #4b4038, #494341);*/
-  /*background-image: linear-gradient(to bottom, #3f152d, #47152e, #4e152d, #56152d, #5d162b, #5e1928, #5f1c26, #5f1f24, #5a2422, #542721, #4f2a22, #492d23);*/
-  /*background-image: linear-gradient(to right, #cc7178, #b46069, #9c4f5a, #853f4b, #6e303c, #71373c, #733f3d, #74463f, #8b6756, #a18972, #b8ab94, #d0ceba);*/
-  height: auto;
   display: flex;
   align-items: center;
   flex-direction:column;

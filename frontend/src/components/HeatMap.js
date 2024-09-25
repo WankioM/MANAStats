@@ -50,29 +50,29 @@ const Heatmap = () => {
   const height = 900;
 
   useEffect(() => {
-    if (loading || error) return; // Prevent execution if loading or error
+    if (loading || error) return; 
 
-    // Step 1: Organize the data into a neat structure
+  
     const landData = [];
     data.bidSuccessfuls.forEach(plot => {
       plot._xs.forEach((x, i) => {
         landData.push({
-          x: parseInt(x), // x coordinate
-          y: parseInt(plot._ys[i]), // y coordinate
-          price: parseInt(plot._pricePerLandInMana), // same price for all coordinates
-          beneficiary: plot._beneficiary // beneficiary info if needed later
+          x: parseInt(x), 
+          y: parseInt(plot._ys[i]), 
+          price: parseInt(plot._pricePerLandInMana), 
+          beneficiary: plot._beneficiary
         });
       });
     });
 
     landData.sort((a, b) => {
       if (a.x === b.x) {
-        return a.y - b.y; // Sort by y if x is the same
+        return a.y - b.y; 
       }
-      return a.x - b.x; // Otherwise, sort by x
+      return a.x - b.x; 
     });
 
-    // Optional: Store `landData` into variables for further use or debugging
+   
     const xValues = landData.map(d => d.x);
     const yValues = landData.map(d => d.y);
     const prices = landData.map(d => d.price);
@@ -81,14 +81,14 @@ const Heatmap = () => {
     console.log('Y Coordinates:', yValues);
     console.log('Prices:', prices);
 
-    // bounds = area inside the axis
+
     const boundsWidth = width - MARGIN.right - MARGIN.left;
     const boundsHeight = height - MARGIN.top - MARGIN.bottom;
 
     const allYGroups = [...new Set(landData.map(d => d.y))];
     const allXGroups = [...new Set(landData.map(d => d.x))];
 
-    // x and y scales
+
     const xScale = d3.scaleBand()
       .range([0, boundsWidth])
       .domain(allXGroups)
@@ -99,21 +99,21 @@ const Heatmap = () => {
       .domain(allYGroups)
       .padding(0.01);
 
-    // Calculate min and max values
+  
     const [min, max] = d3.extent(landData, d => d.price);
 
     if (!min || !max) {
       return null;
     }
 
-    // Update color scale
+
     const newColorScale = d3.scaleSequential()
       .interpolator(d3.interpolateInferno)
       .domain([min, max]);
 
     setColorScale(newColorScale);
 
-    // Build rectangles
+
     const allRects = landData.map((d, i) => {
       return (
         <rect
@@ -139,7 +139,7 @@ const Heatmap = () => {
         <text
           key={i}
           x={xPos + xScale.bandwidth() / 2}
-          y={height - MARGIN.bottom + 20} // y position for x labels
+          y={height - MARGIN.bottom + 20}
           textAnchor="middle"
           dominantBaseline="middle"
           fontSize={10}
@@ -154,7 +154,7 @@ const Heatmap = () => {
       return (
         <text
           key={i}
-          x={-10} // Adjusted x position for y labels
+          x={-10} 
           y={yPos + yScale.bandwidth() / 2}
           textAnchor="end"
           dominantBaseline="middle"
@@ -179,9 +179,9 @@ const Heatmap = () => {
       <span>The colors represent bid activity</span>
 
       
-      <svg width="1000" height="1000"> {/* Changed from 1000px to 1000 for consistency */}
+      <svg width="1000" height="1000">
         <g
-          transform={`translate(${MARGIN.left}, ${MARGIN.top})`} // Simplified the translation
+          transform={`translate(${MARGIN.left}, ${MARGIN.top})`}
         >
           {rectangles}
           {xLabels}
