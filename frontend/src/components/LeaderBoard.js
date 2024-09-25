@@ -41,7 +41,7 @@ const LeaderBoard = () => {
       </div>
       
       <div className='Rows'>
-            {/* Bids from 3rd to 15th position */}
+           
             <div className='rowheadings'>
             <p>RANK </p>
             <p>BIDDER</p>

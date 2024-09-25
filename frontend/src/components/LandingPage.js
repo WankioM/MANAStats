@@ -7,7 +7,7 @@ const LandingPage = () => {
     <div className='heading1'>
       <p> Understanding Auctions Has Never Been Easier</p>
       </div>
-      <div className='heading2'><p> We help you retrieve real estate data on chain within seconds,so you can target the right bidders.</p></div>
+      <div className='heading2'><p> We help you retrieve DecentraLand Estate data on chain within seconds,so you can target the right bidders.</p></div>
       
     </div>
   );

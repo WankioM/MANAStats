@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './PodiumCard.css'; 
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { FaCertificate } from 'react-icons/fa';
 import { FaMedal } from 'react-icons/fa';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { FaCopy } from 'react-icons/fa';
 
 const PodiumCard = ({ bid, position }) => {
+  const [copied, setCopied] = useState(false);
   return (
     <div className="card podiumcard">
       <div className="card-header">
@@ -16,7 +19,16 @@ const PodiumCard = ({ bid, position }) => {
 
       <div className="card-body">
         <p className="hbidder">Bidder</p>
-        <p className="hbidder"> {bid._beneficiary}</p>
+
+        <div className='copyable'>
+         <p className="hbidder"> {bid._beneficiary}</p>
+          <CopyToClipboard text={bid._beneficiary} onCopy={() => setCopied(true)}>
+            <button style={{ color: 'rgba(95, 32, 44,0.1)' }}>
+            <FaCopy style={{ color: 'rgba(95, 32, 44,0.7)' }} />
+            </button>
+        </CopyToClipboard>
+        </div>
+
           <div className="info">
             <div className="bid-price">
             
